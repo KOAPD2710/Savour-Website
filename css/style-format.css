@@ -14,10 +14,6 @@
   /*	cursor: none !important;*/
 }
 
-*::-webkit-scrollbar {
-  display: none;
-}
-
 html, body {
   height: 100%;
   color: var(--w);

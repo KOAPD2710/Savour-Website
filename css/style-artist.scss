@@ -2,7 +2,7 @@
 	position: relative;
 	display: block;
 	width: 100%;
-	padding-top: var(--naviheight);
+	overflow: hidden;
 
 	#col-left {
 		position: fixed;
@@ -31,84 +31,104 @@
 		}
 	}
 }
-
-.sticky-container {
+#hr {
+	position: absolute;
+	top: 0;
+	width: 2px;
+	height: 100vh;
+	background: orange;
+}
+#hrcode {
+	position: absolute;
+	top: 0;
+	width: 2px;
+	height: 100vh;
+	background: teal;
+	z-index: 99999;
+}
+.artist-container{
 	position: relative;
 	display: block;
-	width: 100%;
-	height: 300vh;
+	white-space: nowrap;
+	font-size: 0px;
+	height: 100vh;
+	padding-left: var(--filterw);
+	// padding-top: var(--naviheight);
 
-	.sticky {
-		position: sticky;
-		top: var(--naviheight);
-		display: block;
-		width: 100%;
-		height: calc(100vh - var(--naviheight));
+	.artist {
+		position: relative;
+		display: inline-block;
+		width: 450px;
+		height: 100%;
+		font-size: 12px;
+		border-right: var(--border);
+		white-space: normal;
 		overflow: hidden;
+		z-index: 98;
 
-		.artist-container{
-			position: relative;
-			display: block;
-			white-space: nowrap;
-			font-size: 0px;
+		a {
+			color: var(--white);
+		}
+
+		img {
 			height: 100%;
-			padding-left: var(--filterw);
+			margin-left: 50%;
+			translate: -50% 0;
+			z-index: 0;
+			transform: scale(1.05);
+			filter: opacity(0) brightness(.1) grayscale(50%);
+			transition:
+				filter .4s ease-in,
+				transform .1s ease-in-out .4s;
+		}
 
-			.artist {
-				position: relative;
-				display: inline-block;
-				width: 40vw;
-				max-width: 400px;
-				min-width: 350px;
-				height: 100%;
-				font-size: 12px;
-				
-				white-space: normal;
-				overflow: hidden;
+		.content {
+			position: absolute;
+			bottom: var(--naviheight);
+			left: 0;
+			display: block;
+			width: 100%;
+			padding: 0 2rem;
+			z-index: 10;
 
-				a {
-					color: var(--white);
-				}
-
-				img {
-					height: 100%;
-					margin-left: 50%;
-					translate: -50% 0;
-					z-index: 0;
-					transform: scale(1.05);
-					filter: opacity(0) brightness(.1) grayscale(50%);
-					transition:
-						filter .4s ease-in,
-						transform .1s ease-in-out .4s;
-				}
-
-				.content {
-					position: absolute;
-					bottom: var(--naviheight);
-					left: 0;
-					display: block;
-					width: 100%;
-					padding: 0 2rem;
-					z-index: 10;
-
-					h1 {
-						font-family: FontHead;
-						font-size: 3rem;
-						line-height: 56px;
-						margin: 20px 0;
-					}
-				}
+			h1 {
+				font-family: FontHead;
+				font-size: 3rem;
+				line-height: 56px;
+				margin: 20px 0;
 			}
-			.artist:not(:last-child) {
-				border-right: var(--border);
-			}
-			.artist:hover {
-				img {
-					transform: scale(1);
-					filter: opacity(1) brightness(1);
-					transition: all .6s ease-in-out;
-				}
-			}
+		}
+	}
+	// .artist:not(:last-child) {
+	// 	border-right: var(--border);
+	// }
+	.artist:hover {
+		img {
+			transform: scale(1);
+			filter: opacity(1) brightness(1);
+			transition: all .6s ease-in-out;
+		}
+	}
+	.artist.transform {
+		opacity: 0;
+		transition: all 1s ease-in-out;
+	}
+	.artist.transform.middle {
+		opacity: 1 !important;
+		width: 100vw;
+		max-width: none;
+		min-width: none;
+		border: var(--border);
+		transform-origin: center center;
+		transition: all 1.5s ease-in-out .5s,
+					border .2s ease;
+		z-index: 99;
+
+		img {
+			transform: scale(3) translateY(20%);
+			filter: opacity(1) brightness(1) !important;
+			transform-origin: center center;
+			transition: transform 1s ease-in-out .1s;
 		}
 	}
 }
