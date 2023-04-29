@@ -35,6 +35,7 @@
   width: 2px;
   height: 100vh;
   background: orange;
+  z-index: 99999;
 }
 
 #hrcode {
@@ -57,7 +58,7 @@
 .artist-container .artist {
   position: relative;
   display: inline-block;
-  width: 450px;
+  width: 400px;
   height: 100%;
   font-size: 12px;
   border-right: var(--border);
@@ -66,7 +67,7 @@
   z-index: 98;
 }
 .artist-container .artist a {
-  color: var(--white);
+  color: var(--w);
 }
 .artist-container .artist img {
   height: 100%;
@@ -99,23 +100,24 @@
 }
 .artist-container .artist.transform {
   opacity: 0;
-  transition: all 1s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 .artist-container .artist.transform.middle {
   opacity: 1 !important;
   width: 100vw;
   max-width: none;
   min-width: none;
-  border: var(--border);
+  border-left: var(--border);
+  border-color: var(--w);
   transform-origin: center center;
-  transition: all 1.5s ease-in-out 0.5s, border 0.2s ease;
+  transition: width var(--art-dur) ease-in-out var(--art-delay);
   z-index: 99;
 }
 .artist-container .artist.transform.middle img {
   transform: scale(3) translateY(20%);
   filter: opacity(1) brightness(1) !important;
   transform-origin: center center;
-  transition: transform 1s ease-in-out 0.1s;
+  transition: transform var(--art-dur) ease-in-out var(--art-delay);
 }
 
 /*# sourceMappingURL=style-artist.css.map */

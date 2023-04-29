@@ -2,6 +2,8 @@
   --w: #E0D8B0;
   --b: #0F0C06;
   --border: .4px solid var(--w);
+  --art-dur: 1.5s;
+  --art-delay: .4s;
 }
 
 * {
@@ -63,6 +65,9 @@ html, body {
   font-size: 25px;
 }
 #navigation a {
+  position: relative;
+  display: flex;
+  gap: 0.15rem;
   color: var(--w);
 }
 

@@ -37,6 +37,7 @@
 	width: 2px;
 	height: 100vh;
 	background: orange;
+	z-index: 99999;
 }
 #hrcode {
 	position: absolute;
@@ -58,7 +59,7 @@
 	.artist {
 		position: relative;
 		display: inline-block;
-		width: 450px;
+		width: 400px;
 		height: 100%;
 		font-size: 12px;
 		border-right: var(--border);
@@ -67,7 +68,7 @@
 		z-index: 98;
 
 		a {
-			color: var(--white);
+			color: var(--w);
 		}
 
 		img {
@@ -111,24 +112,24 @@
 	}
 	.artist.transform {
 		opacity: 0;
-		transition: all 1s ease-in-out;
+		transition: all .5s ease-in-out;
 	}
 	.artist.transform.middle {
 		opacity: 1 !important;
 		width: 100vw;
 		max-width: none;
 		min-width: none;
-		border: var(--border);
+		border-left: var(--border);
+		border-color: var(--w);
 		transform-origin: center center;
-		transition: all 1.5s ease-in-out .5s,
-					border .2s ease;
+		transition: width var(--art-dur) ease-in-out var(--art-delay);
 		z-index: 99;
 
 		img {
 			transform: scale(3) translateY(20%);
 			filter: opacity(1) brightness(1) !important;
 			transform-origin: center center;
-			transition: transform 1s ease-in-out .1s;
+			transition: transform var(--art-dur) ease-in-out var(--art-delay);
 		}
 	}
 }

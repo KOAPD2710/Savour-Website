@@ -3,7 +3,8 @@ var filterw = $("#col-left").innerWidth(),
 	height = $(window).innerHeight(),
 	middle = (width - filterw)/2 + filterw;
 document.documentElement.style.setProperty("--filterw",  "".concat(filterw, "px"))
-// $("#hrcode").css('left', ''+(middle)+'px');
+$("#hrcode").css('left', ''+(middle)+'px');
+$("#hr").css('left', ' ' + width/2 + 'px ');
 
 var artist = $(".artist-container"),
 	box = document.querySelectorAll('.artist'),
@@ -21,7 +22,7 @@ gsap.set(artist, {
 window.addEventListener('mousemove', function() {
 
 	dx = event.pageX;
-	rad = 300;
+	rad = 350;
 	coreleft = filterw+rad;
 	coreright = width-rad;
 	mouse = dx-coreleft;
@@ -36,6 +37,7 @@ window.addEventListener('mousemove', function() {
 		if (!$('.artist').hasClass('middle')) {
 			gsap.to(artist, {
 				x: -tilt*(boxlength-width+filterw),
+				ease: Power2.inOut
 			})
 		}
 	}
@@ -52,21 +54,23 @@ window.addEventListener('load', function() {
 			xPercent: -100,
 			ease: Power2.out,
 			duration: 1,
-			delay: .5,
+			delay: .3,
 		})
 		gsap.to("#navigation", {
 			yPercent: -100,
 			ease: Power2.out,
-			duration: 1,
-			delay: .5,
+			duration: .7,
+			delay: .3,
 		})
 
-		test = $('.artist.middle').offset().left;
-		console.log(test);
-		gsap.to('.artist.middle', {
-			x: -(test),
-			ease: "none",
-			duration: "none",
+		tar = $(this),
+		tarw = tar.offset().left;
+		console.log(tarw);
+		gsap.to(tar, {
+			x: -tarw,
+			ease: Power1.inOut,
+			duration: 1.5,
+			delay: .4
 		})
 	})
 })
@@ -89,6 +93,6 @@ links.forEach((link) => {
 		setTimeout(() => {
 			// Redirect to the href value
 			window.location.href = href;
-		}, 2500);
+		}, 50000);
 	});
 });
